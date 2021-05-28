@@ -1,18 +1,23 @@
 library(glue)
-bino=function(S,K,T,r,u,d,n,put=FALSE,am=FALSE){
+library(fOptions)
+bino=function(S,K,T,r,u,d,n,o,put=FALSE,am=FALSE){
   # """
   #   Argumentos:
-  #       S (n˙mero): So ---> Valor de la acciÛn
-  #       K (n˙mero): Precio de ejercicio
-  #       T (n˙mero): Total de periodos
-  #       r (n˙mero): TLR ---> Tasa libre de riesgo
-  #       u (n˙mero): Probabilidad de que suba
-  #       d (n˙mero): Probabilidad de que baje
-  #       n (n˙mero): Total de periodos
+  #       S (n√∫mero): So ---> Valor de la acci√≥n
+  #       K (n√∫mero): Precio de ejercicio
+  #       T (n√∫mero): Total de periodos
+  #       r (n√∫mero): TLR ---> Tasa libre de riesgo
+  #       u (n√∫mero): Probabilidad de que suba
+  #       d (n√∫mero): Probabilidad de que baje
+  #       n (n√∫mero): Total de periodos
+  #       o (n√∫mero): volatilidad
   #   Returns:
   #       [Call,put]: [valor del call europeo, valor del put europeo]
   #   """
-t=T/n;p=(exp(r*t)-d)/(u-d)
+t=T/n
+u=exp(o*sqrt(t))
+d=1/u
+p=(exp(r*t)-d)/(u-d)
 val=matrix(0,n+1,n+1);C=matrix(0,n+1,n+1)
 lista=c()
 
@@ -61,6 +66,6 @@ if(put){
 }
 return(val) #lista
 }
-N=2;S=50;K=51;T=6/12;r=0.05;u=1.06;d=0.95
-b=bino(S,K,T,r,u,d,N,FALSE,FALSE)
+N=2;S=50;K=51;T=6/12;r=0.05;u=1.06;d=0.95;o=0.20
+b=bino(S,K,T,r,u,d,N,o,FALSE,FALSE)
 
