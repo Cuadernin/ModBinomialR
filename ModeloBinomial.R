@@ -1,14 +1,12 @@
 library(glue)
 library(fOptions)
-bino=function(S,K,T,r,u,d,n,o,put=FALSE,am=FALSE){
+bino=function(S,K,T,r,n,o,put=FALSE,am=FALSE){
   # """
   #   Argumentos:
   #       S (número): So ---> Valor de la acción
   #       K (número): Precio de ejercicio
   #       T (número): Total de periodos
   #       r (número): TLR ---> Tasa libre de riesgo
-  #       u (número): Probabilidad de que suba
-  #       d (número): Probabilidad de que baje
   #       n (número): Total de periodos
   #       o (número): volatilidad
   #   Returns:
