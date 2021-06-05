@@ -19,8 +19,8 @@ p=(exp(r*t)-d)/(u-d)
 val=matrix(0,n+1,n+1);C=matrix(0,n+1,n+1)
 lista=c()
 
-#if(put){pos=-1}else{pos=1} #ifelse(put,pos=1,pos=-1)
-pos=ifelse(put,1,1)
+#if(put){pos=-1}else{pos=1}
+pos=ifelse(put,-1,1)
   for(i in 1:n+1){
     for(j in 1:i){
       st=S*(u^(j-1)*d^(i-j))
