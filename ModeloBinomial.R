@@ -19,7 +19,7 @@ p=(exp(r*t)-d)/(u-d)
 val=matrix(0,n+1,n+1);C=matrix(0,n+1,n+1)
 lista=c()
 
-#if(put){pos=-1}else{pos=1}
+#if(put){pos=-1}else{pos=1} -----> alternative
 pos=ifelse(put,-1,1)
   for(i in 1:n+1){
     for(j in 1:i){
